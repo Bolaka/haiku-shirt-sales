@@ -37,6 +37,9 @@ print df_sales['category'].value_counts()
 # this is a datetime column
 print df_sales['birth']
 
+# extracting month, day from the birth datetime column
+df_sales['birth_month'], df_sales['birth_day'] = df_sales['birth'].dt.month, df_sales['birth'].dt.day
+
 # Feature Engineering
 # let's convert order_date to datetime!
 order_dates = np.array(df_sales['order_date'].values)
@@ -55,6 +58,11 @@ df_sales['order_weekofyear'], df_sales['order_dayofweek'] = df_sales['order_date
                                                             df_sales['order_date'].dt.hour, \
                                                             df_sales['order_date'].dt.week, \
                                                             df_sales['order_date'].dt.dayofweek
+
+df_sales['is_birthday'] = 0
+df_sales.loc[(df_sales['birth_month'] == df_sales['order_month'])
+             & (df_sales['birth_day'] == df_sales['order_day']), 'is_birthday'] = 1
+print df_sales['is_birthday'].value_counts()
 df_sales['min_order_date'] = df_sales['order_date'].min()
 
 # age
@@ -105,7 +113,7 @@ for desc in shirt_descs:
 df_sales['shirt_type'] = types
 df_sales['gender'] = genders
 df_sales['color'] = colors
-df_sales = df_sales.drop(['category', 'min_order_date'], 1)
+df_sales = df_sales.drop(['category', 'min_order_date', 'birth_month', 'birth_day'], 1)
 print df_sales.columns
 
 df_sales.to_csv('../data/Haiku_shirt_sales_analyzed.csv', index=True, index_col = 'order_id')

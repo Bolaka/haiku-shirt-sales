@@ -54,39 +54,39 @@ for index, group in grouped:
         value = [0.0] * 7
         value[weekday] = sales
         meanTemp[key] = value
-
-info = collections.OrderedDict()
-for k in meanTemp:
-    vals = meanTemp[k]
-    mean = np.mean(vals)
-    text = ''
-    print k, mean
-
-    if mean > 30:
-        print 'high...'
-        class_name = 'hot'
-        text = 'Average Sales figures crossed 1k on ' + k
-    elif mean < 5:
-        print 'low...'
-        class_name = 'cold'
-        text = 'Average Sales figures pretty low on ' + k
-
-    if text != "":
-        if k in info:
-            value = {}
-            value['class'] = class_name
-            value['text'] = text
-        else:
-            value = {}
-            value['class'] = class_name
-            value['text'] = text
-            info[k] = value
-
-data["meanTemp"] = meanTemp
-data["info"] = info
-
-json_str = json.dumps(data)
-print json_str
-
-with open('data.json', 'w') as outfile:
-    json.dump(data, outfile)
+print meanTemp
+# info = collections.OrderedDict()
+# for k in meanTemp:
+#     vals = meanTemp[k]
+#     mean = np.mean(vals)
+#     text = ''
+#     print k, mean
+#
+#     if mean > 30:
+#         print 'high...'
+#         class_name = 'hot'
+#         text = 'Average Sales figures crossed 1k on ' + k
+#     elif mean < 5:
+#         print 'low...'
+#         class_name = 'cold'
+#         text = 'Average Sales figures pretty low on ' + k
+#
+#     if text != "":
+#         if k in info:
+#             value = {}
+#             value['class'] = class_name
+#             value['text'] = text
+#         else:
+#             value = {}
+#             value['class'] = class_name
+#             value['text'] = text
+#             info[k] = value
+#
+# data["meanTemp"] = meanTemp
+# data["info"] = info
+#
+# json_str = json.dumps(data)
+# print json_str
+#
+# with open('data.json', 'w') as outfile:
+#     json.dump(data, outfile)

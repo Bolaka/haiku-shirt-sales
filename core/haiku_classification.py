@@ -6,7 +6,7 @@ from sknn.mlp import Classifier, Layer
 from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
-from plot_confusion_matrix import plot_confusion_matrix
+from utils import plot_confusion_matrix
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 
