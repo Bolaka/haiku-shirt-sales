@@ -10,7 +10,7 @@ from utils import plot_confusion_matrix
 from sklearn.metrics import confusion_matrix
 import matplotlib.pyplot as plt
 
-df_haiku = pd.read_csv('Haiku_shirt_sales_analyzed.csv')
+df_haiku = pd.read_csv('../data/Haiku_shirt_sales_analyzed.csv')
 
 # target = shirt-type, classification problem
 target = 'shirt_type'
